@@ -1,0 +1,26 @@
+{
+  "name": "Crypto-Live",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidhannn/Crypto-Live.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidhannn/Crypto-Live/issues"
+  },
+  "homepage": "https://github.com/davidhannn/Crypto-Live#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^17.1.0",
+    "nodemon": "^2.0.15"
+  }
+}
