@@ -12,7 +12,7 @@ const CryptoListRow = ({ data }) => {
          </td>
        <td className="column">${current_price}</td>
        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{price_change_24h.toFixed(2)}</td>
-       <td className="column">{price_change_percentage_24h.toFixed(2)}</td>
+       <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{price_change_percentage_24h.toFixed(2)}</td>
     </tr>
   )
 }

@@ -3,14 +3,20 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import CryptoState from './context/crypto/CryptoState'
-// import API_KEY from '../../config.js'
+import AuthState from './context/auth/AuthState'
+
 import CryptoList from './components/crypto-list/crypto-list.component.jsx'
 import CryptoDetailsPage from './page/crypto-details-page/crypto-details-page.component.jsx'
+import RegisterPage from './page/register-page/register-page.component.jsx';
+import LoginPage from './page/login-page/login-page.component.jsx';
 import Navbar from './components/navbar/navbar.component.jsx';
 import { w3cwebsocket as WebSocket } from 'websocket';
 
+import './app.scss';
+
+// import API_KEY from '../../config.js'
 // const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
-const apiKey = process.env.REACT_APP_API_KEY
+// const apiKey = process.env.REACT_APP_API_KEY
 
 // const url ='https://rest-sandbox.coinapi.io/'
 
@@ -42,15 +48,19 @@ const App = () => {
   return (
     <div className="app">
       <div className="app-container">
-      <CryptoState>
-        <Router>
-        <Navbar />
-          <Routes>
-            <Route path="/" element={<CryptoList />} />
-            <Route path="/:name" element={<CryptoDetailsPage />} />
-          </Routes>
-        </Router>
-      </CryptoState>
+        <AuthState>
+          <CryptoState>
+            <Router>
+            <Navbar />
+              <Routes>
+                <Route path="/" element={<CryptoList />} />
+                <Route path="/:name" element={<CryptoDetailsPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+              </Routes>
+            </Router>
+          </CryptoState>
+        </AuthState>
       </div>
     </div>
   );

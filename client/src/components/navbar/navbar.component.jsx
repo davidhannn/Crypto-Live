@@ -15,8 +15,11 @@ const Navbar = () => {
           <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
             <li>Favorites</li>
           </Link>
-          <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
+          <Link to="/login" style={{textDecoration: 'none', color: 'white'}}>
             <li>Login</li>
+          </Link>
+          <Link to="/register" style={{textDecoration: 'none', color: 'white'}}>
+            <li>Register</li>
           </Link>
           </div>
       </ul>

@@ -5,6 +5,14 @@
   background-color: #293143;
   padding: 20px;
   border-radius: 6px;
+  margin-top: 20px;
+}
+
+.crypto-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 // section {

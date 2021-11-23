@@ -14,7 +14,7 @@ const CryptoList = () => {
       return <p>...Loading</p>
     } else {
     return (
-      <div>
+      <div className="crypto-list-container">
         <CryptoSVG />
       <table className="crypto-list-table">
         <thead>
