@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import CryptoState from './context/crypto/CryptoState'
@@ -43,8 +43,8 @@ const App = () => {
     <div className="app">
       <div className="app-container">
       <CryptoState>
-        <Navbar />
         <Router>
+        <Navbar />
           <Routes>
             <Route path="/" element={<CryptoList />} />
             <Route path="/:name" element={<CryptoDetailsPage />} />

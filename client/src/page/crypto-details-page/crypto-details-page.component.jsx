@@ -40,7 +40,6 @@ const CryptoDetailsPage = () => {
 
   return (
     <div>
-      <h1>{name}</h1>
       <CryptoPageHeader data={cryptoData}/>
       <CryptoChart name={name}/>
     </div>

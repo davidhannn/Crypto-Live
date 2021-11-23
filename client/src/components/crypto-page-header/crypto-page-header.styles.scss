@@ -1,8 +1,16 @@
 .crypto-page-header-container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #293143;
   border-radius: 6px;
   padding: 15px;
+  color:white;
+}
+
+.crypto-page-header-right {
+  display: flex;
+  flex-direction: row;
 }
 
 .crypto-page-header-name {
