@@ -7,30 +7,18 @@ const apiUrl = 'https://api.coingecko.com/api/v3/coins'
 const CryptoChart = ({ name }) => {
   const [cryptoData, setCryptoData] = useState(null)
 
-  const formatData = data => {
-    return data.map(el => {
-      return {
-        time: el[0],
-        price: el[1].toFixed(2)
-      }
-    })
-  }
-
   useEffect(() => {
     const fetchData = async () => {
-      const data = await axios.get(`${apiUrl}/bitcoin/market_chart`, {
+      const data = await axios.get(`${apiUrl}/${name}/market_chart`, {
       params: {
         vs_currency: "usd",
         days: "1"
       }
     })
-    console.log(data)
-    setCryptoData({
-      day: formatData(data.data.prices)
-    })
+    setCryptoData(data.data.prices)
   }
   fetchData();
-  }, [])
+  }, [name])
 
   if (!cryptoData) {
     return <p>loading...</p>

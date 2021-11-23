@@ -112,7 +112,7 @@ const CryptoGraph = ({ history }) => {
     <div>
       {/* <Line options={options} data={data} />
        */}
-       <Line
+       {/* <Line
               data={{
                 labels: history.day.map((coin) => {
                   let date = new Date(coin[0]);
@@ -133,7 +133,31 @@ const CryptoGraph = ({ history }) => {
                 ],
               }}
               options={options}
-            />
+            /> */}
+            <Line data={{
+              labels: history.map((coin) => {
+                let date = new Date(coin[0]);
+                let time = date.getHours() > 12
+                ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                : `${date.getHours()}:${date.getMinutes()} AM`;
+                return time
+                // return days === 1 ? time : date.toLocaleDateString()
+              }),
+
+              datasets: [{
+                data: history.map((coin) => coin[1]),
+                // label: `Price ( Past ${days} Days) in ${currency}`,
+                label: "Price",
+                borderColor: "#EEBC1D"
+              }]
+            }}
+            options={{
+              elements: {
+                point: {
+                  radius: 1,
+                },
+              },
+            }} />
     </div>
   )
             }
