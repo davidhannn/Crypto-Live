@@ -5,6 +5,7 @@ import CryptoChart from '../../components/crypto-chart/crypto-chart.component.js
 import CryptoPageHeader from '../../components/crypto-page-header/crypto-page-header.component.jsx';
 import CryptoContext from '../../context/crypto/CryptoContext.js';
 
+import './crypto-details-page.styles.scss';
 // const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
 // const apiKey = process.env.REACT_APP_API_KEY
 
@@ -39,7 +40,7 @@ const CryptoDetailsPage = () => {
   // }, [])
 
   return (
-    <div>
+    <div className="crypto-page-container">
       <CryptoPageHeader data={cryptoData}/>
       <CryptoChart name={name}/>
     </div>

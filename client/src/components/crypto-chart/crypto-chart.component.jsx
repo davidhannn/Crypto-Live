@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import CryptoGraph from '../crypto-graph/crypto-graph.component.jsx'
+import CryptoContext from '../../context/crypto/CryptoContext';
 
 const apiUrl = 'https://api.coingecko.com/api/v3/coins'
 
 const CryptoChart = ({ name }) => {
-  const [cryptoData, setCryptoData] = useState(null)
+  const { getCryptoHistory, cryptoHistory } = useContext(CryptoContext)
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await axios.get(`${apiUrl}/${name}/market_chart`, {
-      params: {
-        vs_currency: "usd",
-        days: "1"
-      }
-    })
-    setCryptoData(data.data.prices)
-  }
-  fetchData();
+    getCryptoHistory(name, 1)
   }, [name])
 
-  if (!cryptoData) {
+  if (!cryptoHistory) {
     return <p>loading...</p>
   } else {
     return (
       <div>
-        <CryptoGraph history={cryptoData}/>
+        <CryptoGraph history={cryptoHistory} name={name}/>
       </div>
     )
   }

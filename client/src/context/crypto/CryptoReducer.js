@@ -1,6 +1,7 @@
 import {
   GET_CRYPTO_LIST,
-  GET_CRYPTO_DATA
+  GET_CRYPTO_DATA,
+  GET_CRYPTO_HISTORY
 } from '../types';
 
 export default(state, action) => {
@@ -15,6 +16,11 @@ export default(state, action) => {
         ...state,
         cryptoData: action.payload
       }
+    case GET_CRYPTO_HISTORY:
+        return {
+          ...state,
+          cryptoHistory: action.payload
+        }
     default:
       return state
   }

@@ -6,7 +6,8 @@ import CryptoReducer from './CryptoReducer.js'
 
 import {
   GET_CRYPTO_LIST,
-  GET_CRYPTO_DATA
+  GET_CRYPTO_DATA,
+  GET_CRYPTO_HISTORY
 } from '../types.js'
 
 const apiURL = 'https://api.coingecko.com/api/v3/coins/'
@@ -15,7 +16,8 @@ const apiURL = 'https://api.coingecko.com/api/v3/coins/'
 const CryptoState = (props) => {
   const initialState = {
     cryptoList: [],
-    cryptoData: {}
+    cryptoData: {},
+    cryptoHistory: []
   }
 
   const [state, dispatch] = useReducer(CryptoReducer, initialState)
@@ -43,10 +45,25 @@ const CryptoState = (props) => {
           payload: result.data
         })
       })
-  }
+   }
+
+   const getCryptoHistory = async (name, days) => {
+    const data = await axios.get(`${apiURL}/${name}/market_chart`, {
+      params: {
+        vs_currency: "usd",
+        days: days
+      }
+    })
+
+    dispatch({
+      type: GET_CRYPTO_HISTORY,
+      payload: data.data.prices
+    })
+
+   }
 
   return (
-    <CryptoContext.Provider value={{ cryptoList: state.cryptoList, cryptoData: state.cryptoData, getCryptoList, getCryptoData }}>
+    <CryptoContext.Provider value={{ cryptoList: state.cryptoList, cryptoData: state.cryptoData, cryptoHistory: state.cryptoHistory, getCryptoList, getCryptoData, getCryptoHistory }}>
       {props.children}
     </CryptoContext.Provider>
   )

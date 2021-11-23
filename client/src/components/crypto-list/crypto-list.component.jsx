@@ -18,10 +18,8 @@ const CryptoList = () => {
           <tr className="crypto-list-row-container">
             <th className="column">Coin</th>
             <th className="column">Price</th>
-            <th className="column">Price Change</th>
-            <th className="column">Price Change %</th>
-            {/* <th>Coin</th> */}
-            {/* <th>Coin</th> */}
+            <th className="column">Price Change (24H)</th>
+            <th className="column">Price Change % (24H)</th>
           </tr>
         </thead>
         <tbody>
