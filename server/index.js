@@ -8,7 +8,7 @@ const axios = require('axios');
 
 const PORT = 4000;
 
-const apiUrl = 'https://rest-sandbox.coinapi.io/v1/assets/limit=10'
+const apiUrl = 'https://rest-sandbox.coinapi.io/v1/assets/'
 
 app.use(cors());
 
@@ -20,6 +20,14 @@ const options = {
 }
 
 app.get('/cryptos', (req, res) => {
+  axios.get(`${apiUrl}`, options)
+    .then((result) => {
+      res.send(result.data)
+    })
+  // res.send('testing')
+})
+
+app.get('/cryptos/:name', (req, res) => {
   axios.get(`${apiUrl}`, options)
     .then((result) => {
       res.send(result.data)

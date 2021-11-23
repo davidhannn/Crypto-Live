@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import CryptoChart from '../../components/crypto-chart/crypto-chart.component.jsx'
 const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
 const apiKey = process.env.REACT_APP_API_KEY
 
@@ -11,7 +12,6 @@ const CryptoDetailsPage = () => {
   const [graph, setGraph] = useState([]);
 
   // useEffect(() => {
-  //   console.log(name)
   //   ws_link.onopen = () => {
   //     console.log('websocket connected')
   //     ws_link.send(JSON.stringify({
@@ -19,25 +19,26 @@ const CryptoDetailsPage = () => {
   //             "apikey": apiKey,
   //             "heartbeat": false,
   //             "subscribe_data_type": ["trade"],
-  //             "subscribe_filter_symbol_id": [
-  //               "BITSTAMP_SPOT_BTC_USD$",
-  //               "BITFINEX_SPOT_BTC_LTC$",
-  //               "COINBASE_",
-  //               "ITBIT_"
-  //               ]
+  //             "subscribe_filter_asset_id": [`${name}`],
+  //             "subscribe_filter_symbol_id": [`${name}`]
   //           }))
 
   //   ws_link.onmessage = (message) => {
-  //     setGraph((currentGraph) => [...currentGraph, message])
-
+  //     // setGraph((currentGraph) => [...currentGraph, JSON.parse(message.data)])
+  //     setGraph(JSON.parse(message.data))
   //   }
   // }
+
   // }, [])
 
-
-
   return (
-    <h1>CryptoDetailsPage</h1>
+    <div>
+      <h1>{name}</h1>
+
+      <p>{graph.price}</p>
+      <CryptoChart name={name}/>
+    </div>
+
   )
 }
 

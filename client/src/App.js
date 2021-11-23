@@ -9,10 +9,10 @@ import CryptoDetailsPage from './page/crypto-details-page/crypto-details-page.co
 
 import { w3cwebsocket as WebSocket } from 'websocket';
 
-const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
+// const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
 const apiKey = process.env.REACT_APP_API_KEY
 
-const url ='https://rest-sandbox.coinapi.io/'
+// const url ='https://rest-sandbox.coinapi.io/'
 
 const App = () => {
 
