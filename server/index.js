@@ -6,6 +6,8 @@ require('dotenv').config();
 const APIKEY = require('../config.js');
 const axios = require('axios');
 
+const authRoutes = require('./routes/auth.js')
+
 const PORT = 4000;
 
 const apiUrl = 'https://rest-sandbox.coinapi.io/v1/assets/'
@@ -19,21 +21,27 @@ const options = {
   }
 }
 
-app.get('/cryptos', (req, res) => {
-  axios.get(`${apiUrl}`, options)
-    .then((result) => {
-      res.send(result.data)
-    })
-  // res.send('testing')
+app.use('/auth', authRoutes)
+
+app.listen(PORT, () => {
+  console.log(`app listening on PORT ${PORT}`)
 })
 
-app.get('/cryptos/:name', (req, res) => {
-  axios.get(`${apiUrl}`, options)
-    .then((result) => {
-      res.send(result.data)
-    })
-  // res.send('testing')
-})
+// app.get('/cryptos', (req, res) => {
+//   axios.get(`${apiUrl}`, options)
+//     .then((result) => {
+//       res.send(result.data)
+//     })
+//   // res.send('testing')
+// })
+
+// app.get('/cryptos/:name', (req, res) => {
+//   axios.get(`${apiUrl}`, options)
+//     .then((result) => {
+//       res.send(result.data)
+//     })
+//   // res.send('testing')
+// })
 
 // app.get('/cryptos', (req, res) => {
 //   const wss = new webSocket('wss://ws-sandbox.coinapi.io/v1/');
@@ -59,6 +67,3 @@ app.get('/cryptos/:name', (req, res) => {
 // })
 
 
-app.listen(PORT, () => {
-  console.log(`app listening on PORT ${PORT}`)
-})
