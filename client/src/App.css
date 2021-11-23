@@ -6,9 +6,11 @@
 
 .app {
   background-color: #171b26;
-  height: 100vh;
+  /* height: 100vh; */
+  overflow-y: hidden;
 }
 .app-container {
   margin: 0 auto;
   width: 900px;
+  /* height:100vh; */
 }
