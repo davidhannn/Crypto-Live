@@ -6,7 +6,7 @@ import CryptoState from './context/crypto/CryptoState'
 // import API_KEY from '../../config.js'
 import CryptoList from './components/crypto-list/crypto-list.component.jsx'
 import CryptoDetailsPage from './page/crypto-details-page/crypto-details-page.component.jsx'
-
+import Navbar from './components/navbar/navbar.component.jsx';
 import { w3cwebsocket as WebSocket } from 'websocket';
 
 // const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
@@ -40,8 +40,10 @@ const App = () => {
   // }})
 
   return (
-    <div className="App">
+    <div className="app">
+      <div className="app-container">
       <CryptoState>
+        <Navbar />
         <Router>
           <Routes>
             <Route path="/" element={<CryptoList />} />
@@ -49,6 +51,7 @@ const App = () => {
           </Routes>
         </Router>
       </CryptoState>
+      </div>
     </div>
   );
 }

@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import CryptoChart from '../../components/crypto-chart/crypto-chart.component.jsx'
-const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
-const apiKey = process.env.REACT_APP_API_KEY
+import CryptoPageHeader from '../../components/crypto-page-header/crypto-page-header.component.jsx';
+import CryptoContext from '../../context/crypto/CryptoContext.js';
 
-const url ='https://rest-sandbox.coinapi.io/'
+// const ws_link = new WebSocket('wss://ws-sandbox.coinapi.io/v1/');
+// const apiKey = process.env.REACT_APP_API_KEY
+
+// const url ='https://rest-sandbox.coinapi.io/'
 
 const CryptoDetailsPage = () => {
   const { name } = useParams();
+  const { getCryptoData, cryptoData } = useContext(CryptoContext);
   const [graph, setGraph] = useState([]);
 
+  useEffect(() => {
+    getCryptoData(name)
+  }, [])
   // useEffect(() => {
   //   ws_link.onopen = () => {
   //     console.log('websocket connected')
@@ -34,8 +41,7 @@ const CryptoDetailsPage = () => {
   return (
     <div>
       <h1>{name}</h1>
-
-      <p>{graph.price}</p>
+      <CryptoPageHeader data={cryptoData}/>
       <CryptoChart name={name}/>
     </div>
 

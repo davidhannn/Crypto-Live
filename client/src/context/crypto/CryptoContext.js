@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const crypoContext = createContext();
+const cryptoContext = createContext();
 
-export default crypoContext
+export default cryptoContext

@@ -13,14 +13,25 @@ const CryptoList = () => {
       return <p>...Loading</p>
     } else {
     return (
-      <div className="crypto-list-table">
+      <table className="crypto-list-table">
+        <thead>
+          <tr className="crypto-list-row-container">
+            <th className="column">Coin</th>
+            <th className="column">Price</th>
+            <th className="column">Price Change</th>
+            <th className="column">Price Change %</th>
+            {/* <th>Coin</th> */}
+            {/* <th>Coin</th> */}
+          </tr>
+        </thead>
+        <tbody>
         {cryptoList && cryptoList.map((coin) => (
-          // <Link to={`/${coin.id}`} style={{ textDecoration: 'none'}}>
+          <Link to={`/${coin.id}`} style={{ textDecoration: 'none'}}>
             <CryptoListRow data={coin} key={coin.id}/>
-            // <p>{coin.id}</p>
-          // </Link>
+          </Link>
         ))}
-      </div>
+        </tbody>
+      </table>
     )
   }
 }
