@@ -1,25 +1,14 @@
 const express = require('express');
-const webSocket = require('ws');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
-const APIKEY = require('../config.js');
-const axios = require('axios');
 
 const authRoutes = require('./routes/auth.js')
 
 const PORT = 4000;
 
-const apiUrl = 'https://rest-sandbox.coinapi.io/v1/assets/'
-
 app.use(cors());
-
-const options = {
-  headers: {
-    'X-CoinAPI-Key': process.env.API_KEY,
-    'Accept-Encoding': 'deflate, gzip'
-  }
-}
+app.use(express.json())
 
 app.use('/auth', authRoutes)
 
@@ -27,6 +16,20 @@ app.listen(PORT, () => {
   console.log(`app listening on PORT ${PORT}`)
 })
 
+
+
+
+
+// const webSocket = require('ws');
+// const APIKEY = require('../config.js');
+// const apiUrl = 'https://rest-sandbox.coinapi.io/v1/assets/'
+
+// const options = {
+  //   headers: {
+  //     'X-CoinAPI-Key': process.env.API_KEY,
+  //     'Accept-Encoding': 'deflate, gzip'
+  //   }
+  // }
 // app.get('/cryptos', (req, res) => {
 //   axios.get(`${apiUrl}`, options)
 //     .then((result) => {
