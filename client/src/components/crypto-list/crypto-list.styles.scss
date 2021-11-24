@@ -15,6 +15,13 @@
   align-items: center;
 }
 
+.crypto-list-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
 // section {
 //   display: grid;
 //   margin: 2% auto;

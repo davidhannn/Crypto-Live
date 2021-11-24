@@ -65,7 +65,6 @@ const CryptoState = (props) => {
    const sortCryptoData = (sortVal) => {
       axios.get(`${apiURL}/markets?vs_currency=usd&order=${sortVal}&per_page=20&page=1&sparkline=false'`)
       .then((result) => {
-        console.log(result.data)
         dispatch({
           type: SORT_CRYPTO_DATA,
           payload: result.data

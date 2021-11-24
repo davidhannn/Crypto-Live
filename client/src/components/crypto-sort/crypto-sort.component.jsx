@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import CryptoContext from '../../context/crypto/CryptoContext.js';
 
+import './crypto-sort.styles.scss';
+
 const CryptoSort = () => {
   const { sortCryptoData } = useContext(CryptoContext);
 
@@ -10,7 +12,7 @@ const CryptoSort = () => {
   }
 
   return (
-    <select onChange={handleChange}>
+    <select className="select-dropdown" onChange={handleChange}>
       <option value="market_cap_desc">Market Cap Desc</option>
       <option value="market_cap_asc">Market Cap Asc</option>
       <option value="volume_desc">Volume Desc</option>

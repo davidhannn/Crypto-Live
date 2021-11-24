@@ -4,6 +4,7 @@ import CryptoContext from '../../context/crypto/CryptoContext';
 import CryptoListRow from '../crypto-list-row/crypto-list-row.component.jsx'
 import CryptoSVG from '../crypto-svg/crypto-svg.component.jsx'
 import CryptoSort from '../crypto-sort/crypto-sort.component.jsx'
+import SearchBar from '../searchbar/searchbar.component.jsx';
 
 import './crypto-list.styles.scss';
 
@@ -17,7 +18,8 @@ const CryptoList = () => {
     return (
       <div className="crypto-list-container">
         <CryptoSVG />
-        <div>
+        <div className="crypto-list-header-row">
+          <SearchBar />
           <CryptoSort />
         </div>
 
