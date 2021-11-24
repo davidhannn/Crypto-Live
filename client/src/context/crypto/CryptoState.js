@@ -7,7 +7,8 @@ import CryptoReducer from './CryptoReducer.js'
 import {
   GET_CRYPTO_LIST,
   GET_CRYPTO_DATA,
-  GET_CRYPTO_HISTORY
+  GET_CRYPTO_HISTORY,
+  SORT_CRYPTO_DATA
 } from '../types.js'
 
 const apiURL = 'https://api.coingecko.com/api/v3/coins/'
@@ -59,11 +60,28 @@ const CryptoState = (props) => {
       type: GET_CRYPTO_HISTORY,
       payload: data.data.prices
     })
-
    }
 
+   const sortCryptoData = (sortVal) => {
+      axios.get(`${apiURL}/markets?vs_currency=usd&order=${sortVal}&per_page=20&page=1&sparkline=false'`)
+      .then((result) => {
+        console.log(result.data)
+        dispatch({
+          type: SORT_CRYPTO_DATA,
+          payload: result.data
+        })
+      })
+   }
+
+
   return (
-    <CryptoContext.Provider value={{ cryptoList: state.cryptoList, cryptoData: state.cryptoData, cryptoHistory: state.cryptoHistory, getCryptoList, getCryptoData, getCryptoHistory }}>
+    <CryptoContext.Provider value={{ cryptoList: state.cryptoList,
+    cryptoData: state.cryptoData,
+    cryptoHistory: state.cryptoHistory,
+    getCryptoList,
+    getCryptoData,
+    getCryptoHistory,
+    sortCryptoData }}>
       {props.children}
     </CryptoContext.Provider>
   )

@@ -8,8 +8,8 @@ const CryptoSVG = () => {
         targets: '.logo path',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
-        duration: 500,
-        delay: function(el, i) { return i * 250 },
+        duration: 300,
+        delay: function(el, i) { return i * 200 },
         direction: 'alternate',
         loop: false
       });

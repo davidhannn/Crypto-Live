@@ -3,6 +3,7 @@ import { Link, useRouteMatch } from 'react-router-dom'
 import CryptoContext from '../../context/crypto/CryptoContext';
 import CryptoListRow from '../crypto-list-row/crypto-list-row.component.jsx'
 import CryptoSVG from '../crypto-svg/crypto-svg.component.jsx'
+import CryptoSort from '../crypto-sort/crypto-sort.component.jsx'
 
 import './crypto-list.styles.scss';
 
@@ -16,6 +17,10 @@ const CryptoList = () => {
     return (
       <div className="crypto-list-container">
         <CryptoSVG />
+        <div>
+          <CryptoSort />
+        </div>
+
       <table className="crypto-list-table">
         <thead>
           <tr className="crypto-list-row-container">
