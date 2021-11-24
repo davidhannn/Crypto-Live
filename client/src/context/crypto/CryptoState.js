@@ -8,7 +8,8 @@ import {
   GET_CRYPTO_LIST,
   GET_CRYPTO_DATA,
   GET_CRYPTO_HISTORY,
-  SORT_CRYPTO_DATA
+  SORT_CRYPTO_DATA,
+  SEARCH_CRYPTO_DATA
 } from '../types.js'
 
 const apiURL = 'https://api.coingecko.com/api/v3/coins/'
@@ -72,6 +73,17 @@ const CryptoState = (props) => {
       })
    }
 
+   const searchCrypto = (letter) => {
+     console.log(letter)
+     const searchedCryptos = state.cryptoList.map(({ id }) => {
+       return id.includes(letter)
+     })
+      dispatch({
+        type: SEARCH_CRYPTO_DATA,
+        payload: searchedCryptos
+      })
+   }
+
 
   return (
     <CryptoContext.Provider value={{ cryptoList: state.cryptoList,
@@ -80,7 +92,9 @@ const CryptoState = (props) => {
     getCryptoList,
     getCryptoData,
     getCryptoHistory,
-    sortCryptoData }}>
+    sortCryptoData,
+    searchCrypto
+    }}>
       {props.children}
     </CryptoContext.Provider>
   )
