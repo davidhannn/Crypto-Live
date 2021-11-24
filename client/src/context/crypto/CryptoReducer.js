@@ -31,7 +31,7 @@ export default(state, action) => {
     case SEARCH_CRYPTO_DATA:
           return {
             ...state,
-            cryptoList: action.payload
+            cryptoList: [...action.payload]
         }
     default:
       return state

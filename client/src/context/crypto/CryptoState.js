@@ -73,17 +73,27 @@ const CryptoState = (props) => {
       })
    }
 
-   const searchCrypto = (letter) => {
-     console.log(letter)
-     const searchedCryptos = state.cryptoList.map(({ id }) => {
-       return id.includes(letter)
-     })
+  //  const searchCrypto = (letter) => {
+  //    console.log(letter)
+  //    const searchedCryptos = state.cryptoList.map(({ id }) => {
+  //      return id.includes(letter)
+  //    })
+  //     dispatch({
+  //       type: SEARCH_CRYPTO_DATA,
+  //       payload: searchedCryptos
+  //     })
+  //  }
+
+   const searchCrypto = (word) => {
+    axios.get(`${apiURL}/${word}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false'`)
+    .then((result) => {
+      const newRes = [result.data]
       dispatch({
         type: SEARCH_CRYPTO_DATA,
-        payload: searchedCryptos
+        payload: newRes
       })
-   }
-
+    })
+  }
 
   return (
     <CryptoContext.Provider value={{ cryptoList: state.cryptoList,

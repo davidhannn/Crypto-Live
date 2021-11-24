@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom'
 import CryptoContext from '../../context/crypto/CryptoContext';
 import CryptoListRow from '../crypto-list-row/crypto-list-row.component.jsx'
@@ -11,6 +11,9 @@ import './crypto-list.styles.scss';
 const CryptoList = () => {
   const { cryptoList } = useContext(CryptoContext)
   // let match = useRouteMatch();
+  // useEffect(() => {
+
+  // }, [cryptoList])
 
     if (cryptoList.length === 0) {
       return <p>...Loading</p>
