@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/auth/AuthContext.js';
 import { Link, useNavigate } from 'react-router-dom';
+
+import './login-page.styles.scss';
+
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext)
   const [formData, setFormData] = useState({
