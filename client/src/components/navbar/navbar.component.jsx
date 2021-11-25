@@ -5,14 +5,15 @@ import AuthContext from '../../context/auth/AuthContext';
 import './navbar.styles.scss';
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logoutUser();
+  }
 
   const normalRoutes = () => {
     return (
       <>
-      <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
-        <li>Favorites</li>
-      </Link>
       <Link to="/login" style={{textDecoration: 'none', color: 'white'}}>
         <li>Login</li>
       </Link>
@@ -29,8 +30,8 @@ const Navbar = () => {
       <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
         <li>Favorites</li>
       </Link>
-       <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
-        <li>Log Out</li>
+       <Link to="/login" style={{textDecoration: 'none', color: 'white'}}>
+        <li onClick={handleLogout}>Log Out</li>
       </Link>
       </>
     )

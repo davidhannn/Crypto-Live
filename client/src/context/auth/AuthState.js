@@ -69,7 +69,7 @@ const AuthState = (props) => {
   }
 
   const logoutUser = () => {
-    auth.logOut();
+    auth.signOut();
     // return console.log(form);
     // dispatch({
     //   type: REGISTER_USER,
