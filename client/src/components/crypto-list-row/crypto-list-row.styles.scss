@@ -14,6 +14,9 @@
   padding: 15px;
   // background-color: #293143;
   color: #fff;
+  &.active {
+    border: none;
+  }
 }
 
 .crypto-status {
@@ -28,6 +31,10 @@
   width: 200px;
   display: flex;
   align-items: center;
+
+  &.favorite {
+    width: 50px;
+  }
 }
 
 // section {

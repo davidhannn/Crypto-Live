@@ -5,6 +5,7 @@ import CryptoListRow from '../crypto-list-row/crypto-list-row.component.jsx'
 import CryptoSVG from '../crypto-svg/crypto-svg.component.jsx'
 import CryptoSort from '../crypto-sort/crypto-sort.component.jsx'
 import SearchBar from '../searchbar/searchbar.component.jsx';
+import FavoriteIcon from '../favorite-icon/favorite-icon.component.jsx'
 
 import './crypto-list.styles.scss';
 
@@ -33,13 +34,18 @@ const CryptoList = () => {
             <th className="column">Price</th>
             <th className="column">Price Change (24H)</th>
             <th className="column">Price Change % (24H)</th>
+            <th className="column favorite"></th>
           </tr>
         </thead>
         <tbody>
+
         {cryptoList && cryptoList.map((coin) => (
-          <Link to={`/${coin.id}`} style={{ textDecoration: 'none'}}>
-            <CryptoListRow data={coin} key={coin.id}/>
-          </Link>
+          <tr className="crypto-list-row-container">
+             {/* <FavoriteIcon id={coin.id}/> */}
+
+              <CryptoListRow data={coin} key={coin.id}/>
+
+          </tr>
         ))}
         </tbody>
       </table>

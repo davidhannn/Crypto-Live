@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../context/auth/AuthContext';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteFilledIcon from '@mui/icons-material/Favorite';
 import { IconButton } from '@mui/material'
 import { db } from '../../firebase/firebase.js';
 
 const FavoriteIcon = ({ id }) => {
   const { user } = useContext(AuthContext);
-  const [favorite, setFavorite] = useState()
+  const [favorite, setFavorite] = useState(false)
 
   const favoritesRef = db.collection('favorites').doc(user.uid)
 
@@ -25,11 +26,27 @@ const FavoriteIcon = ({ id }) => {
     // });
   }
 
-  // console.log(user.uid);
+  useEffect(() => {
+    favoritesRef.onSnapshot((doc) => {
+      if (doc.exists && doc.data()[id] === true) {
+        setFavorite(true)
+      } else {
+        setFavorite(false)
+      }
+      // if (snapshot.docs[id] === true) {
+      //   setFavorite(true)
+      // } else {
+      //   setFavorite(false)
+      // }
+    })
+  }, [])
 
   return (
     <IconButton>
-        <FavoriteBorderIcon onClick={handleClick}/>
+        { !favorite
+        ? <FavoriteBorderIcon onClick={handleClick}/>
+        : <FavoriteFilledIcon onClick={handleClick} style={{ fill: "red" }} />
+        }
     </IconButton>
   )
 }
