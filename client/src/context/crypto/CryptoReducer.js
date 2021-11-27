@@ -32,7 +32,7 @@ export default(state, action) => {
     case SEARCH_CRYPTO_DATA:
           return {
             ...state,
-            cryptoList: [...action.payload]
+            cryptoSearchList: action.payload
         }
     case GET_CRYPTO_FAVORITES:
           return {

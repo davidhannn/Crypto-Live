@@ -7,3 +7,19 @@
 .search-bar-form {
   width: 70%
 }
+
+.option-container {
+  padding: 15px;
+  z-index: 10;
+  width: 90%;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  // position: absolute;
+}
+
+.option-container-right {
+  display: flex;
+  flex-direction: column;
+}

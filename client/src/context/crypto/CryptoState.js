@@ -22,7 +22,8 @@ const CryptoState = (props) => {
   const initialState = {
     cryptoList: [],
     cryptoData: {},
-    cryptoHistory: []
+    cryptoHistory: [],
+    cryptoSearchList: []
   }
 
   const [state, dispatch] = useReducer(CryptoReducer, initialState)
@@ -112,12 +113,11 @@ const CryptoState = (props) => {
   //  }
 
    const searchCrypto = (word) => {
-    axios.get(`${apiURL}/${word}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false'`)
+    axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&page=1&sparkline=false`)
     .then((result) => {
-      const newRes = [result.data]
       dispatch({
         type: SEARCH_CRYPTO_DATA,
-        payload: newRes
+        payload: result.data
       })
     })
   }
@@ -126,6 +126,7 @@ const CryptoState = (props) => {
     <CryptoContext.Provider value={{ cryptoList: state.cryptoList,
     cryptoData: state.cryptoData,
     cryptoHistory: state.cryptoHistory,
+    cryptoSearchList: state.cryptoSearchList,
     getCryptoList,
     getCryptoData,
     getCryptoHistory,
