@@ -17,13 +17,12 @@ const FavoriteIcon = ({ id }) => {
         return doc.ref.update({
           [id]: !doc.data()[id]
         })
+      else {
+        db.collection('favorites').doc(user.uid).set({
+          [id]: true
+        })
+      }
     })
-      // set(
-      // {[id]: true },
-      // {merge: true})
-    // await db.setDoc(db.doc(db, "favorites", user.uid), {
-    //   id: true
-    // });
   }
 
   useEffect(() => {

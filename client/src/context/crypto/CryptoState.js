@@ -59,6 +59,11 @@ const CryptoState = (props) => {
         days: days
       }
     })
+
+    dispatch({
+      type: GET_CRYPTO_HISTORY,
+      payload: data.data.prices
+    })
   }
 
     const getCryptoFavorites = (userId) => {
@@ -82,10 +87,7 @@ const CryptoState = (props) => {
     }
     //  const favorites = state.cryptoList.find((crypto) => )
 
-    // dispatch({
-    //   type: GET_CRYPTO_HISTORY,
-    //   payload: data.data.prices
-    // })
+
 
 
    const sortCryptoData = (sortVal) => {
