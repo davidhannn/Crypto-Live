@@ -27,7 +27,7 @@ const Navbar = () => {
   const privateRoutes = () => {
     return (
       <>
-      <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
+      <Link to="/favorites" style={{textDecoration: 'none', color: 'white'}}>
         <li>Favorites</li>
       </Link>
        <Link to="/login" style={{textDecoration: 'none', color: 'white'}}>

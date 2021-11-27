@@ -9,6 +9,7 @@ import CryptoList from './components/crypto-list/crypto-list.component.jsx'
 import CryptoDetailsPage from './page/crypto-details-page/crypto-details-page.component.jsx'
 import RegisterPage from './page/register-page/register-page.component.jsx';
 import LoginPage from './page/login-page/login-page.component.jsx';
+import FavoritesPage from './page/favorites-page/favorites-page.component.jsx';
 import Navbar from './components/navbar/navbar.component.jsx';
 import { w3cwebsocket as WebSocket } from 'websocket';
 
@@ -57,6 +58,7 @@ const App = () => {
                 <Route path="/:name" element={<CryptoDetailsPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/favorites" element={<FavoritesPage />} />
               </Routes>
             </Router>
           </CryptoState>
