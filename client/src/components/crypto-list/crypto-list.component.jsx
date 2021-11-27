@@ -10,11 +10,11 @@ import FavoriteIcon from '../favorite-icon/favorite-icon.component.jsx'
 import './crypto-list.styles.scss';
 
 const CryptoList = () => {
-  const { cryptoList } = useContext(CryptoContext)
+  const { cryptoList, getCryptoList } = useContext(CryptoContext)
   // let match = useRouteMatch();
-  // useEffect(() => {
-
-  // }, [cryptoList])
+  useEffect(() => {
+    getCryptoList()
+  }, [])
 
     if (cryptoList.length === 0) {
       return <p>...Loading</p>

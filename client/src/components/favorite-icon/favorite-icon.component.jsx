@@ -33,11 +33,6 @@ const FavoriteIcon = ({ id }) => {
       } else {
         setFavorite(false)
       }
-      // if (snapshot.docs[id] === true) {
-      //   setFavorite(true)
-      // } else {
-      //   setFavorite(false)
-      // }
     })
   }, [])
 
