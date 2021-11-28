@@ -38,8 +38,8 @@ const FavoriteIcon = ({ id }) => {
   return (
     <IconButton>
         { !favorite
-        ? <FavoriteBorderIcon onClick={handleClick}/>
-        : <FavoriteFilledIcon onClick={handleClick} style={{ fill: "red" }} />
+        ? <FavoriteBorderIcon onClick={handleClick} style={{ fill: "#47c2be"}}/>
+        : <FavoriteFilledIcon onClick={handleClick} style={{ fill: "#47c2be" }} />
         }
     </IconButton>
   )

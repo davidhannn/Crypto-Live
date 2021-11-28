@@ -7,7 +7,7 @@ import FavoriteIcon from '../favorite-icon/favorite-icon.component.jsx'
 
 const CryptoListRow = ({ data }) => {
   const { user } = useContext(AuthContext)
-  const { id, name, image, current_price, market_cap, market_cap_rank, price_change_24h, price_change_percentage_24h } = data
+  const { id, name, image, current_price, market_cap_change_percentage_24h, market_cap_change_24h, price_change_24h, price_change_percentage_24h } = data
 
   return (
     <>
@@ -19,8 +19,9 @@ const CryptoListRow = ({ data }) => {
           </td>
         <td className="column">${current_price}</td>
         <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{price_change_24h.toFixed(2)}</td>
-        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{price_change_percentage_24h.toFixed(2)}</td>
-
+        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{price_change_percentage_24h.toFixed(2)}%</td>
+        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{(market_cap_change_24h/1000000).toFixed(2)} M</td>
+        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{market_cap_change_percentage_24h.toFixed(2)}%</td>
       </tr>
     </Link>
     { !user ? null : <td className="column favorite"><FavoriteIcon id={id}/></td> }

@@ -83,13 +83,7 @@ const CryptoState = (props) => {
         }
       })
 
-
-      // console.log(favorites, 'favorites')
     }
-    //  const favorites = state.cryptoList.find((crypto) => )
-
-
-
 
    const sortCryptoData = (sortVal) => {
       axios.get(`${apiURL}/markets?vs_currency=usd&order=${sortVal}&per_page=20&page=1&sparkline=false'`)
@@ -100,17 +94,6 @@ const CryptoState = (props) => {
         })
       })
    }
-
-  //  const searchCrypto = (letter) => {
-  //    console.log(letter)
-  //    const searchedCryptos = state.cryptoList.map(({ id }) => {
-  //      return id.includes(letter)
-  //    })
-  //     dispatch({
-  //       type: SEARCH_CRYPTO_DATA,
-  //       payload: searchedCryptos
-  //     })
-  //  }
 
    const searchCrypto = (word) => {
     axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&page=1&sparkline=false`)

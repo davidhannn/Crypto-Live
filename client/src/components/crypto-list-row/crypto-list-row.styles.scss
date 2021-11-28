@@ -1,6 +1,6 @@
 .crypto-icon-container {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 
 }
 
@@ -11,11 +11,14 @@
   justify-content: space-between;
   border: 1px solid #171b26;
   border-radius: 6px;
-  padding: 15px;
+  padding: 10px;
   // background-color: #293143;
   color: #fff;
   &.active {
     border: none;
+  }
+  &.hover {
+    background-color: #212838;
   }
 }
 
@@ -28,7 +31,7 @@
 
 .column {
   text-align: left;
-  width: 200px;
+  width: 180px;
   display: flex;
   align-items: center;
 
