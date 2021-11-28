@@ -35,6 +35,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-page-container">
+      <div className="login-page-container-mid">
       <h2>Login</h2>
       <form className="form-input" onSubmit={handleSubmit}>
         {/* <input className="input" type="text" name="username" value={formData.username} placeholder="Enter Username" onChange={handleChange}/> */}
@@ -43,7 +44,8 @@ const LoginPage = () => {
         <input className="input" type="password" name="password2" value={formData.password2} placeholder="Enter Password Again" onChange={handleChange}/>
         <button className="register-button" type="submit">Login</button>
       </form>
-      <div>Don't have an account? <Link to="/register">Register</Link></div>
+      <div>Don't have an account? <Link to="/register" style={{ color: 'white'}}>Register</Link></div>
+      </div>
     </div>
   )
 }

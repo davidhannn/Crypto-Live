@@ -3,8 +3,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  // align-items: center;
+  color: white;
+}
+
+.register-page-container-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   color: white;
+  background-color: #293143;
+  padding: 60px;
 }
 
 .input {
