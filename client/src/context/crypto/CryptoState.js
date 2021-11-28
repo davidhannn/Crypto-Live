@@ -87,16 +87,21 @@ const CryptoState = (props) => {
 
     }
 
-   const sortCryptoData = (sortVal) => {
-      axios.get(`${apiURL}/markets?vs_currency=usd&order=${sortVal}&per_page=20&page=1&sparkline=false'`)
-      .then((result) => {
-        dispatch({
-          type: SORT_CRYPTO_DATA,
-          payload: result.data
-        })
-      })
-   }
+  //  const sortCryptoData = (sortVal) => {
+  //     axios.get(`${apiURL}/markets?vs_currency=usd&order=${sortVal}&per_page=20&page=1&sparkline=false'`)
+  //     .then((result) => {
+  //       dispatch({
+  //         type: SORT_CRYPTO_DATA,
+  //         payload: result.data
+  //       })
+  //     })
+  //  }
 
+   const sortCryptoData = (val) => {
+     dispatch({
+       type: SORT_CRYPTO_DATA
+     })
+   }
    const searchCrypto = (word) => {
     axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&page=1&sparkline=false`)
     .then((result) => {

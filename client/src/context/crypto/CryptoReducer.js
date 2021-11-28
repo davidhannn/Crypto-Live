@@ -24,10 +24,15 @@ export default(state, action) => {
           ...state,
           cryptoHistory: action.payload
         }
+    // case SORT_CRYPTO_DATA:
+    //       return {
+    //         ...state,
+    //         cryptoList: action.payload
+    //     }
     case SORT_CRYPTO_DATA:
           return {
             ...state,
-            cryptoList: action.payload
+            cryptoList: state.cryptoList.sort((a, b) => a.price_change_24h - b.price_change_24h)
         }
     case SEARCH_CRYPTO_DATA:
           return {

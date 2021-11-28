@@ -11,7 +11,7 @@ import FavoriteIcon from '../favorite-icon/favorite-icon.component.jsx'
 import './crypto-list.styles.scss';
 
 const CryptoList = (props) => {
-  const { cryptoList, getCryptoList, cryptoFavorites, getCryptoFavorites } = useContext(CryptoContext)
+  const { cryptoList, getCryptoList, cryptoFavorites, getCryptoFavorites, sortCryptoData } = useContext(CryptoContext)
   const { user } = useContext(AuthContext);
   // let match = useRouteMatch();
 
@@ -23,12 +23,19 @@ const CryptoList = (props) => {
     }
   }, [])
 
+  const handleSort = () => {
+    console.log('testing')
+    sortCryptoData()
+  }
+
     if (cryptoList.length === 0) {
       return <p>...Loading</p>
     } else {
     return (
       <div className="crypto-list-container">
-        <CryptoSVG />
+        <div className="crypto-svg-container">
+          <CryptoSVG />
+        </div>
         <div className="crypto-list-header-row">
           {/* <SearchBar /> */}
           <CryptoSort />
@@ -39,7 +46,7 @@ const CryptoList = (props) => {
           <tr className="crypto-list-row-container">
             <th className="column">Coin</th>
             <th className="column">Price</th>
-            <th className="column">Price Change</th>
+            <th className="column" onClick={handleSort}>Price Change</th>
             <th className="column">Price Change % </th>
             <th className="column">Market Cap Change</th>
             <th className="column">Market Cap Change %</th>

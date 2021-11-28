@@ -7,7 +7,7 @@ const CryptoSVG = () => {
     anime({
         targets: '.logo path',
         strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInOutSine',
+        easing: 'linear',
         duration: 500,
         delay: function(el, i) { return i * 200 },
         direction: 'alternate',
