@@ -37,7 +37,7 @@ export default(state, action) => {
     case GET_CRYPTO_FAVORITES:
           return {
             ...state,
-            cryptoList: state.cryptoList.filter((crypto) => action.payload.indexOf(crypto.id) !== -1)
+            cryptoFavorites: state.cryptoList.filter((crypto) => action.payload.indexOf(crypto.id) !== -1)
         }
     default:
       return state

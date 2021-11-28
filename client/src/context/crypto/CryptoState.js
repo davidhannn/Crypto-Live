@@ -23,7 +23,8 @@ const CryptoState = (props) => {
     cryptoList: [],
     cryptoData: {},
     cryptoHistory: [],
-    cryptoSearchList: []
+    cryptoSearchList: [],
+    cryptoFavorites: []
   }
 
   const [state, dispatch] = useReducer(CryptoReducer, initialState)
@@ -76,6 +77,7 @@ const CryptoState = (props) => {
           const list = Object.keys(doc.data()).filter(key => doc.data()[key] === true)
           // const favorites = state.cryptoList.filter((crypto) => list.indexOf(crypto.id) !== -1);
           // console.log(favorites)
+          console.log(list)
           dispatch({
             type: GET_CRYPTO_FAVORITES,
             payload: list
@@ -110,6 +112,7 @@ const CryptoState = (props) => {
     cryptoData: state.cryptoData,
     cryptoHistory: state.cryptoHistory,
     cryptoSearchList: state.cryptoSearchList,
+    cryptoFavorites: state.cryptoFavorites,
     getCryptoList,
     getCryptoData,
     getCryptoHistory,

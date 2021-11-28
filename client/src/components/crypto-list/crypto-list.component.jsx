@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom'
 import CryptoContext from '../../context/crypto/CryptoContext';
+import AuthContext from '../../context/auth/AuthContext';
 import CryptoListRow from '../crypto-list-row/crypto-list-row.component.jsx'
 import CryptoSVG from '../crypto-svg/crypto-svg.component.jsx'
 import CryptoSort from '../crypto-sort/crypto-sort.component.jsx'
@@ -9,11 +10,17 @@ import FavoriteIcon from '../favorite-icon/favorite-icon.component.jsx'
 
 import './crypto-list.styles.scss';
 
-const CryptoList = () => {
-  const { cryptoList, getCryptoList } = useContext(CryptoContext)
+const CryptoList = (props) => {
+  const { cryptoList, getCryptoList, cryptoFavorites, getCryptoFavorites } = useContext(CryptoContext)
+  const { user } = useContext(AuthContext);
   // let match = useRouteMatch();
+
   useEffect(() => {
-    getCryptoList()
+    // getCryptoList()
+    if (props.setting === 'favorite') {
+      console.log('testing')
+      getCryptoFavorites(user.uid)
+    }
   }, [])
 
     if (cryptoList.length === 0) {
@@ -41,12 +48,13 @@ const CryptoList = () => {
         </thead>
         <tbody>
 
-        {cryptoList && cryptoList.map((coin) => (
+        {props.setting !== 'favorite' ? cryptoList && cryptoList.map((coin) => (
           <tr className="crypto-list-row-container">
-             {/* <FavoriteIcon id={coin.id}/> */}
-
               <CryptoListRow data={coin} key={coin.id}/>
-
+          </tr>
+        )): cryptoFavorites && cryptoFavorites.map((coin) => (
+          <tr className="crypto-list-row-container">
+              <CryptoListRow data={coin} key={coin.id}/>
           </tr>
         ))}
         </tbody>

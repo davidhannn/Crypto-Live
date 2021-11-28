@@ -14,7 +14,6 @@ const SearchBar = () => {
   }, [])
 
   const handleChange = (e) => {
-    console.log(e.target.value)
     setSearch(e.target.value)
     setSearchedVal(cryptoSearchList.filter((crypto) => crypto.id.toLowerCase().includes(e.target.value.toLowerCase())))
     // console.log(val)
