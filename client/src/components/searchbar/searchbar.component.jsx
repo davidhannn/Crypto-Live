@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import CryptoContext from '../../context/crypto/CryptoContext.js';
 import { Link, useRouteMatch } from 'react-router-dom'
-
+import SearchIcon from '@mui/icons-material/Search';
 import './searchbar.styles.scss';
 
 const SearchBar = () => {
@@ -15,9 +15,13 @@ const SearchBar = () => {
 
   const handleChange = (e) => {
     console.log(e.target.value)
+    setSearch(e.target.value)
     setSearchedVal(cryptoSearchList.filter((crypto) => crypto.id.toLowerCase().includes(e.target.value.toLowerCase())))
     // console.log(val)
-    setSearch(e.target.value)
+    if (e.target.value == '') {
+      setSearchedVal([])
+    }
+
   }
 
   const handleSubmit = (e) => {
@@ -27,18 +31,28 @@ const SearchBar = () => {
 
   return (
     <form className="search-bar-form" onSubmit={handleSubmit}>
-        <input type="text" name="search" value={search} onChange={handleChange} className="search-bar" placeholder="Search Coins"/>
+        <div className="input-container">
+          <i className="search-icon">
+
+          </i>
+          <input type="text" name="search" value={search} onChange={handleChange} className="search-bar"  />
+          <SearchIcon style={{ fill: "#47c2be"}}/>
+        </div>
+        <div className="option-container-main" onClick={() => setSearchedVal([])}>
         {searchedVal.map(({ id, image, symbol, name }) => (
-          <Link to={`/${id}`} style={{ textDecoration: 'none'}}>
+           <Link to={`/${id}`} style={{ textDecoration: 'none'}}>
           <div className="option-container">
+
             <img style={{ height: '35px', width: '35px'}} src={image} />
             <div className="option-container-right">
               <p>{name}</p>
               <p>{symbol}</p>
             </div>
+
           </div>
           </Link>
         ))}
+        </div>
     </form>
   )
 }

@@ -23,7 +23,7 @@ const CryptoList = () => {
       <div className="crypto-list-container">
         <CryptoSVG />
         <div className="crypto-list-header-row">
-          <SearchBar />
+          {/* <SearchBar /> */}
           <CryptoSort />
         </div>
 

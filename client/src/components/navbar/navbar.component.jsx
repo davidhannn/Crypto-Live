@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom'
 import AuthContext from '../../context/auth/AuthContext';
+import Searchbar from '../searchbar/searchbar.component.jsx';
 
 import './navbar.styles.scss';
 
@@ -40,6 +41,9 @@ const Navbar = () => {
   return (
     <nav>
       <ul className="navbar-container" style={{ listStyle: 'none'}}>
+        <div className="navbar-left">
+          <Searchbar />
+        </div>
         <div className="navbar-right">
           <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
             <li >Home</li>
