@@ -12,11 +12,6 @@ const RegisterPage = () => {
     password: '',
     password2: ''
   })
-  // const [username, setUsername] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [password2, setPassword2] = useState('')
-
 
   const handleChange = ({ target: { name, value }}) => {
     setFormData({ ...formData, [name]: value })
