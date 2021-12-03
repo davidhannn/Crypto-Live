@@ -11,10 +11,6 @@ const FavoritesPage = () => {
   const { getCryptoFavorites, cryptoFavorites } = useContext(CryptoContext);
   const [favorites, setFavorites] = useState([]);
 
-  // useEffect(() => {
-  //   getCryptoFavorites(user.uid)
-  // }, [])
-
   if (cryptoFavorites == null) {
     return <p>...Loading</p>
   } else {

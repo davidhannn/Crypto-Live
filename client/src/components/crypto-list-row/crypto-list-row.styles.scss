@@ -24,9 +24,12 @@
 }
 
 .crypto-status {
-  color: green;
+  border-radius: 6px;
+  padding: 12px;
+  background-color: red;
+  color: white;
   &.active {
-    color: red
+    background-color: green
   }
 }
 

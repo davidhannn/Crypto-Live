@@ -30,11 +30,12 @@ const CryptoState = (props) => {
   const [state, dispatch] = useReducer(CryptoReducer, initialState)
 
   useEffect(() => {
-    getCryptoList()
+    getCryptoList(1)
   }, [])
 
-  const getCryptoList = () => {
-    axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false'`)
+  const getCryptoList = (pageNumber) => {
+    console.log(pageNumber)
+    axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=${pageNumber}&sparkline=false'`)
       .then((result) => {
 
         dispatch({
@@ -102,6 +103,8 @@ const CryptoState = (props) => {
        type: SORT_CRYPTO_DATA
      })
    }
+
+
    const searchCrypto = (word) => {
     axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&page=1&sparkline=false`)
     .then((result) => {

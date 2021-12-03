@@ -7,6 +7,7 @@ import CryptoSVG from '../crypto-svg/crypto-svg.component.jsx'
 import CryptoSort from '../crypto-sort/crypto-sort.component.jsx'
 import SearchBar from '../searchbar/searchbar.component.jsx';
 import FavoriteIcon from '../favorite-icon/favorite-icon.component.jsx'
+import Pagination from '../pagination/pagination.component.jsx';
 
 import './crypto-list.styles.scss';
 
@@ -66,6 +67,8 @@ const CryptoList = (props) => {
         ))}
         </tbody>
       </table>
+
+      <Pagination />
       </div>
     )
   }

@@ -18,10 +18,18 @@ const CryptoListRow = ({ data }) => {
           <p style={{ marginLeft: '10px'}}>{name}</p>
           </td>
         <td className="column">${current_price}</td>
-        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>${price_change_24h.toFixed(2)}</td>
-        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{price_change_percentage_24h.toFixed(2)}%</td>
-        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>${(market_cap_change_24h/1000000).toFixed(2)} M</td>
-        <td className={price_change_24h < 0 ? 'column crypto-status active' : 'column crypto-status'}>{market_cap_change_percentage_24h.toFixed(2)}%</td>
+        <td className="column">
+          <div className={price_change_24h < 0 ? 'crypto-status active' : 'crypto-status'}>${price_change_24h.toFixed(2)}</div>
+        </td>
+        <td className="column">
+        <div className={price_change_24h < 0 ? 'crypto-status active' : 'crypto-status'}>{price_change_percentage_24h.toFixed(2)}%</div>
+        </td>
+        <td className="column">
+        <div className={price_change_24h < 0 ? 'crypto-status active' : 'crypto-status'}>${(market_cap_change_24h/1000000).toFixed(2)} M</div>
+        </td>
+        <td className="column">
+          <div className={price_change_24h < 0 ? 'crypto-status active' : 'crypto-status'}>{market_cap_change_percentage_24h.toFixed(2)}%</div>
+        </td>
       </tr>
     </Link>
     { !user ? null : <td className="column favorite"><FavoriteIcon id={id}/></td> }
