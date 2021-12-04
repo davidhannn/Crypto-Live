@@ -36,6 +36,8 @@ const CryptoWatchModal = () => {
         getCryptoAlertPrices(user.uid);
         // console.log(arrayOfObj)
         // setAlertCryptos(item)
+      } else {
+
       }
     })
   }, []);
@@ -70,7 +72,7 @@ const CryptoWatchModal = () => {
     })
   }
 
-  if(!alertCryptos) {
+  if(!cryptoAlerts) {
     return <p>...Loading</p>
   } else {
   return (
