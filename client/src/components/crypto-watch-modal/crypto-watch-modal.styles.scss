@@ -1,0 +1,126 @@
+.crypto-watch-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #293143;
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 20px;
+  width: 100%
+}
+
+.crypto-watch-modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal-content {
+  width: 500px;
+  height: 400px;
+  background-color: #2a3247;
+  border-radius: 6px;
+  color: white;
+}
+
+.modal-header {
+  padding: 10px;
+}
+
+.modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: flex-start;
+}
+
+.modal-body-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.alert-button {
+  display: flex;
+  width: 150px;
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  border: 1px solid white;
+  background-color: #171b26;
+  &:hover {
+    border: 1px solid #47c2be;
+    cursor: pointer;
+  }
+}
+
+.modal-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.crypto-alert-box-container {
+  display: flex;
+  flex-direction: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  // justify-content: space-between;
+}
+
+.crypto-alert-box {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  margin-right: 20px;
+  border-radius: 6px;
+  width: 150px;
+  border: 1px solid white;
+  background-color: #171b26;
+  color: white;
+}
+
+.modal-row-input {
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #171b26;
+  color:white;
+  border: 1px solid white;
+  width: 60%;
+  margin-left: 15px;
+}
+
+.modal-button {
+  padding: 10px;
+  width: 100px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: 2px solid #47c2be;
+  }
+}
+
+.modal-button-row {
+  display: flex;
+  flex-direction: flex-end;
+  margin-top: 15px;
+}

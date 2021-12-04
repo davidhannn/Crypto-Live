@@ -17,8 +17,6 @@ const Pagination = () => {
     } else {
       setNext10Page(prev => prev + 10)
     }
-    //   if (next10)
-
   }
 
   return (

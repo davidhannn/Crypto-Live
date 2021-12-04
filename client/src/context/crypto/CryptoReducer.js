@@ -4,7 +4,8 @@ import {
   GET_CRYPTO_HISTORY,
   SORT_CRYPTO_DATA,
   SEARCH_CRYPTO_DATA,
-  GET_CRYPTO_FAVORITES
+  GET_CRYPTO_FAVORITES,
+  SET_CRYPTO_ALERTS
 } from '../types';
 
 export default(state, action) => {
@@ -43,6 +44,11 @@ export default(state, action) => {
           return {
             ...state,
             cryptoFavorites: state.cryptoList.filter((crypto) => action.payload.indexOf(crypto.id) !== -1)
+        }
+    case SET_CRYPTO_ALERTS:
+        return {
+          ...state,
+          cryptoAlerts: action.payload
         }
     default:
       return state
