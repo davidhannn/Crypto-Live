@@ -29,6 +29,7 @@
     "node": "^17.1.0",
     "nodemon": "^2.0.15",
     "react-anime": "^4.1.1",
+    "react-toastify": "^8.1.0",
     "ws": "^8.2.3",
     "wscat": "^5.0.0"
   }

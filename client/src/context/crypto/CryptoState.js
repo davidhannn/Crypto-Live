@@ -33,12 +33,12 @@ const CryptoState = (props) => {
 
   useEffect(() => {
     getCryptoList(1)
+    getCryptoFavorites()
   }, [])
 
   const getCryptoList = (pageNumber) => {
     axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=${pageNumber}&sparkline=false'`)
       .then((result) => {
-
         dispatch({
           type: GET_CRYPTO_LIST,
           payload: result.data
@@ -85,15 +85,6 @@ const CryptoState = (props) => {
 
     }
 
-  //  const sortCryptoData = (sortVal) => {
-  //     axios.get(`${apiURL}/markets?vs_currency=usd&order=${sortVal}&per_page=20&page=1&sparkline=false'`)
-  //     .then((result) => {
-  //       dispatch({
-  //         type: SORT_CRYPTO_DATA,
-  //         payload: result.data
-  //       })
-  //     })
-  //  }
    const getCryptoAlertPrices = (userId) => {
     const alertsRef = db.collection('alerts').doc(userId);
 
@@ -110,7 +101,6 @@ const CryptoState = (props) => {
 
       arrayOfObj.forEach((id, i) => {
         if (i === 0) {
-          console.log(coinPriceUrl.concat(id.coin))
           coinPriceUrl = coinPriceUrl.concat(id.coin)
         } else {
           coinPriceUrl = coinPriceUrl.concat(`%2C${id.coin}`)
