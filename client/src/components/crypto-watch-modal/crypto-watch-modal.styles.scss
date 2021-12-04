@@ -66,8 +66,30 @@
 .alert-button {
   display: flex;
   width: 150px;
+  padding: 10px;
+  border-radius: 6px;
 }
 
 .modal-row {
   display: flex;
+}
+
+.crypto-alert-box-container {
+  display: flex;
+  flex-direction: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  // justify-content: space-between;
+}
+
+.crypto-alert-box {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-right: 20px;
+  border-radius: 6px;
+  width: 150px;
+  border: 1px solid white;
+  background-color: #171b26;
+  color: white;
 }

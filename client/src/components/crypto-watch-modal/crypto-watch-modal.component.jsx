@@ -116,13 +116,20 @@ const CryptoWatchModal = () => {
               </div>
               <button className="modal-button" type="submit">Submit</button>
             </form>
+
+            <button className="modal-button" onClick={showModal}>Close</button>
           </div>
         </div>
           </div>
         </div>}
+        <div className="crypto-alert-box-container">
         {alertCryptos && alertCryptos.map((crypto) => (
-            <p>{crypto.coin}</p>
+            <div className="crypto-alert-box">
+              <p>{crypto.coin}</p>
+              <p>{crypto.price}</p>
+            </div>
           ))}
+        </div>
     </div>
   )
 }
