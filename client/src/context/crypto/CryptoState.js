@@ -34,7 +34,6 @@ const CryptoState = (props) => {
   }, [])
 
   const getCryptoList = (pageNumber) => {
-    console.log(pageNumber)
     axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=${pageNumber}&sparkline=false'`)
       .then((result) => {
 
@@ -70,15 +69,11 @@ const CryptoState = (props) => {
   }
 
     const getCryptoFavorites = (userId) => {
-      // console.log(list, 'list')
       const favoritesRef = db.collection('favorites').doc(userId);
 
       favoritesRef.get().then((doc) => {
         if (doc.exists) {
           const list = Object.keys(doc.data()).filter(key => doc.data()[key] === true)
-          // const favorites = state.cryptoList.filter((crypto) => list.indexOf(crypto.id) !== -1);
-          // console.log(favorites)
-          console.log(list)
           dispatch({
             type: GET_CRYPTO_FAVORITES,
             payload: list

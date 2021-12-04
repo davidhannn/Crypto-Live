@@ -37,10 +37,10 @@ const CryptoList = (props) => {
         <div className="crypto-svg-container">
           <CryptoSVG />
         </div>
-        <div className="crypto-list-header-row">
+        {/* <div className="crypto-list-header-row"> */}
           {/* <SearchBar /> */}
-          <CryptoSort />
-        </div>
+          {/* <CryptoSort /> */}
+        {/* </div> */}
 
       <table className="crypto-list-table">
         <thead>
@@ -68,7 +68,7 @@ const CryptoList = (props) => {
         </tbody>
       </table>
 
-      <Pagination />
+      {props.setting !== 'favorite' ? <Pagination /> : null}
       </div>
     )
   }

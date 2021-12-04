@@ -3,6 +3,7 @@ import axios from 'axios';
 import AuthContext from '../../context/auth/AuthContext';
 import CryptoContext from '../../context/crypto/CryptoContext';
 import CryptoList from '../../components/crypto-list/crypto-list.component.jsx'
+import CryptoWatchModal from '../../components/crypto-watch-modal/crypto-watch-modal.component.jsx'
 import { db } from '../../firebase/firebase.js';
 import './favorites-page.styles.scss';
 
@@ -17,6 +18,7 @@ const FavoritesPage = () => {
   return (
     <div className="favorites-page">
         <CryptoList setting="favorite"/>
+        <CryptoWatchModal />
     </div>
   )
   }
