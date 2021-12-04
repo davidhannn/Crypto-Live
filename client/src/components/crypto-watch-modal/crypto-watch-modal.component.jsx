@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import AuthContext from '../../context/auth/AuthContext';
 import './crypto-watch-modal.styles.scss';
 import CryptoContext from '../../context/crypto/CryptoContext.js';
@@ -13,11 +13,30 @@ const CryptoWatchModal = () => {
   const [form, setForm] = useState({ coin: '', price: 0, notes: ''})
   const [search, setSearch] = useState('')
   const [searchedVal, setSearchedVal] = useState([]);
+  const [alertCryptos, setAlertCryptos] = useState(null)
   const showModal = () => {
     setDisplayModal(prev => !prev);
   }
 
   const alertsRef = db.collection('alerts').doc(user.uid);
+
+  useEffect(() => {
+    alertsRef.onSnapshot((doc) => {
+      if (doc.exists) {
+        console.log(doc.data())
+        const arrayOfObj = Object.entries(doc.data()).map((item) => {
+            return {
+              coin: item[0],
+              price: item[1].price,
+              notes: item[1].notes
+            }
+        })
+        setAlertCryptos(arrayOfObj)
+        // console.log(arrayOfObj)
+        // setAlertCryptos(item)
+      }
+    })
+  }, []);
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value)
@@ -33,9 +52,6 @@ const CryptoWatchModal = () => {
     setForm({ ...form, [name]: value })
   }
 
-  // const handleSearchClick = (id) => {
-  //   setForm({...form, coin : id})
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,14 +66,14 @@ const CryptoWatchModal = () => {
         })
       }
     })
-
-    console.log(form)
   }
 
+  if(!alertCryptos) {
+    return <p>...Loading</p>
+  } else {
   return (
     <div className="crypto-watch-container">
       <button className="alert-button" onClick={showModal}>Create Alert</button>
-      Crypto Watch Modal
       {!displayModal ? null :
         <div className="crypto-watch-modal-container">
           <div className="modal-content">
@@ -102,15 +118,14 @@ const CryptoWatchModal = () => {
             </form>
           </div>
         </div>
-
-        {/* <div className="modal-footer">
-          <button className="modal-button" onClick={showModal}>Close</button>
-          <button className="modal-button" type="submit">Submit</button>
-        </div> */}
-      </div>
+          </div>
         </div>}
+        {alertCryptos && alertCryptos.map((crypto) => (
+            <p>{crypto.coin}</p>
+          ))}
     </div>
   )
+}
 }
 
 export default CryptoWatchModal;
