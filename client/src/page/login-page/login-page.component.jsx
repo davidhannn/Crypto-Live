@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/auth/AuthContext.js';
+import { ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 
 import './login-page.styles.scss';
@@ -13,6 +14,17 @@ const LoginPage = () => {
   })
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const notify = () => toast(`Logged in!`, {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    className: 'toasty-background'
+    })
 
   const handleChange = ({ target: { name, value }}) => {
     setFormData({ ...formData, [name]: value })
@@ -28,6 +40,7 @@ const LoginPage = () => {
     try {
       await loginUser(formData.email, formData.password)
       navigate('/')
+      notify();
     } catch {
       setError('Failed to login')
     }
@@ -44,6 +57,16 @@ const LoginPage = () => {
         <input className="input" type="password" name="password2" value={formData.password2} placeholder="Enter Password Again" onChange={handleChange}/>
         <button className="register-button" type="submit">Login</button>
       </form>
+      <ToastContainer
+            position="top-right"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover/>
       <div>Don't have an account? <Link to="/register" style={{ color: 'white'}}>Register</Link></div>
       </div>
     </div>

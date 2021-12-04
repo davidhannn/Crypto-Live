@@ -36,6 +36,7 @@ const CryptoState = (props) => {
   useEffect(() => {
     getCryptoList(1)
     getCryptoFavorites()
+    getCryptoAlertPrices()
   }, [user])
 
   const getCryptoList = (pageNumber) => {

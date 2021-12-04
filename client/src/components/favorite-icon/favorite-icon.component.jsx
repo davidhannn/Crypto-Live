@@ -15,10 +15,10 @@ const FavoriteIcon = ({ id }) => {
   const [favorite, setFavorite] = useState(false)
   const notifyFav = () => toast(`Added ${id} to Favorites`, {
     position: "top-right",
-    autoClose: 2000,
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     className: 'toasty-background'
@@ -26,10 +26,10 @@ const FavoriteIcon = ({ id }) => {
 
     const notifyRemove = () => toast(`Removed ${id} from Favorites`, {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
       className: 'toasty-background'
@@ -77,7 +77,7 @@ const FavoriteIcon = ({ id }) => {
         }
           <ToastContainer
             position="top-right"
-            autoClose={2000}
+            autoClose={1000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

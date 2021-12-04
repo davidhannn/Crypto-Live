@@ -2,14 +2,27 @@ import React, { useContext } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom'
 import AuthContext from '../../context/auth/AuthContext';
 import Searchbar from '../searchbar/searchbar.component.jsx';
+import { ToastContainer, toast } from 'react-toastify';
 
 import './navbar.styles.scss';
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
 
+  const notify = () => toast(`Logged out!`, {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    className: 'toasty-background'
+    })
+
   const handleLogout = () => {
     logoutUser();
+    notify();
   }
 
   const normalRoutes = () => {
@@ -33,7 +46,9 @@ const Navbar = () => {
       </Link>
        <Link to="/login" style={{textDecoration: 'none', color: 'white'}}>
         <li onClick={handleLogout}>Log Out</li>
+
       </Link>
+
       </>
     )
   }
@@ -49,6 +64,16 @@ const Navbar = () => {
             <li >Home</li>
           </Link>
           {!user ? normalRoutes() : privateRoutes()}
+          <ToastContainer
+            position="top-right"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover/>
           </div>
       </ul>
     </nav>

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import AuthContext from '../../context/auth/AuthContext.js';
 import './register-page.styles.scss';
 
@@ -12,6 +13,18 @@ const RegisterPage = () => {
     password: '',
     password2: ''
   })
+
+  const notify = () => toast(`User created!`, {
+    position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    className: 'toasty-background'
+    })
+
 
   const handleChange = ({ target: { name, value }}) => {
     setFormData({ ...formData, [name]: value })
@@ -27,6 +40,7 @@ const RegisterPage = () => {
     try {
       await registerUser(formData.email, formData.password)
       navigate('/')
+      notify();
     } catch {
       setError('Failed to create account')
     }
@@ -46,6 +60,16 @@ const RegisterPage = () => {
 
       <div>Have an account? <Link to="/login" style={{ color: 'white'}}>Log in</Link></div>
     </div>
+    <ToastContainer
+            position="top-right"
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover/>
     </div>
   )
 }
