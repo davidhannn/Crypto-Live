@@ -15,7 +15,6 @@ const AuthState = (props) => {
     user: {},
     loading: true
   }
-
   const [state, dispatch] = useReducer(AuthReducer, initialState)
 
   useEffect(() => {

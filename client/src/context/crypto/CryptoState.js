@@ -5,6 +5,7 @@ import { db } from '../../firebase/firebase.js';
 
 import CryptoContext from './CryptoContext.js'
 import CryptoReducer from './CryptoReducer.js'
+import AuthContext from '../auth/AuthContext.js';
 
 import {
   GET_CRYPTO_LIST,
@@ -29,12 +30,13 @@ const CryptoState = (props) => {
     cryptoAlerts: []
   }
 
+  const { user } = useContext(AuthContext)
   const [state, dispatch] = useReducer(CryptoReducer, initialState)
 
   useEffect(() => {
     getCryptoList(1)
     getCryptoFavorites()
-  }, [])
+  }, [user])
 
   const getCryptoList = (pageNumber) => {
     axios.get(`${apiURL}/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=${pageNumber}&sparkline=false'`)

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../../context/auth/AuthContext';
+import CryptoContext from '../../context/crypto/CryptoContext';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteFilledIcon from '@mui/icons-material/Favorite';
 import { IconButton } from '@mui/material'
@@ -10,6 +11,7 @@ import './favorite-icon.styles.scss';
 
 const FavoriteIcon = ({ id }) => {
   const { user } = useContext(AuthContext);
+  const { getCryptoFavorites } = useContext(CryptoContext);
   const [favorite, setFavorite] = useState(false)
   const notifyFav = () => toast(`Added ${id} to Favorites`, {
     position: "top-right",
