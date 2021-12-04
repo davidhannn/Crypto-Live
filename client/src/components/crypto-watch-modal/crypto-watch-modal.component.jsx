@@ -4,7 +4,8 @@ import './crypto-watch-modal.styles.scss';
 import CryptoContext from '../../context/crypto/CryptoContext.js';
 import SearchIcon from '@mui/icons-material/Search';
 import { db } from '../../firebase/firebase.js';
-
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const CryptoWatchModal = () => {
   const { user } = useContext(AuthContext);
@@ -128,8 +129,15 @@ const CryptoWatchModal = () => {
         {cryptoAlerts && cryptoAlerts.map((crypto) => {
           return (
             <div className="crypto-alert-box">
-              <p>{crypto.coin}</p>
-              {crypto.status == 'higher' ? <p>Price above {crypto.price}</p> : <p>Price below {crypto.price}</p>}
+              <div className="crypto-alert-box-left">
+                <p>{crypto.coin}</p>
+                {crypto.status == 'higher' ?
+                <h6>Price above {crypto.price} </h6> :
+                <h6>Price below {crypto.price} </h6>}
+              </div>
+              <div className="crypto-alert-box-right">
+                {crypto.status == 'higher' ? <ArrowUpwardIcon style={{ fill: "green"}}/> : <ArrowDownwardIcon style={{ fill: "red"}}/>}
+              </div>
             </div>
         )})}
         </div>
