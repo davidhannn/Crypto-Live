@@ -84,11 +84,10 @@ const CryptoWatchModal = () => {
         </div>
 
         <div className="modal-body">
-          <div className="modal-body-header">
+
+          <i className="search-icon"></i>
             <form onSubmit={handleSubmit}>
                 <div className="input-container">
-              <i className="search-icon">
-              </i>
               <input type="text" name="search" value={search} onChange={handleSearchChange} className="search-bar"  />
               <SearchIcon style={{ fill: "#47c2be"}}/>
             </div>
@@ -109,22 +108,27 @@ const CryptoWatchModal = () => {
             ))}
         </div>
               <div className="modal-row">
-                 <p>Set Price</p>
-                 <input type="text" name="price" value={form.price}onChange={handleChange}/>
+                 <p style={{ width: '80px'}}>Set Price</p>
+                 <input type="text" name="price" value={form.price} className="modal-row-input" onChange={handleChange}/>
               </div>
               <div className="modal-row">
-                 <p>Notes</p>
-                 <input type="text" name="notes" value={form.notes} onChange={handleChange} />
+                 <p style={{ width: '80px'}}>Notes</p>
+                 <input type="text" name="notes" value={form.notes} className="search-bar"className="modal-row-input" onChange={handleChange} />
               </div>
-              <button className="modal-button" type="submit">Submit</button>
+              <div className="modal-button-row">
+                <button className="modal-button" type="submit">Submit</button>
+                <button className="modal-button" className="modal-button"onClick={showModal}>Close</button>
+              </div>
             </form>
 
 
           </div>
-          <button className="modal-button" onClick={showModal}>Close</button>
+
+
         </div>
           </div>
-        </div>}
+     }
+
         <div className="crypto-alert-box-container">
         {cryptoAlerts && cryptoAlerts.map((crypto) => {
           return (
