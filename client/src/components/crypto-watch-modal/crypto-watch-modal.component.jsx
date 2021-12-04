@@ -9,7 +9,7 @@ import { db } from '../../firebase/firebase.js';
 const CryptoWatchModal = () => {
   const { user } = useContext(AuthContext);
   const [displayModal, setDisplayModal] = useState(false)
-  const { searchCrypto, cryptoSearchList  } = useContext(CryptoContext)
+  const { searchCrypto, cryptoSearchList, getCryptoAlertPrices, cryptoAlerts  } = useContext(CryptoContext)
   const [form, setForm] = useState({ coin: '', price: 0, notes: ''})
   const [search, setSearch] = useState('')
   const [searchedVal, setSearchedVal] = useState([]);
@@ -32,6 +32,7 @@ const CryptoWatchModal = () => {
             }
         })
         setAlertCryptos(arrayOfObj)
+        getCryptoAlertPrices(user.uid);
         // console.log(arrayOfObj)
         // setAlertCryptos(item)
       }
@@ -117,18 +118,20 @@ const CryptoWatchModal = () => {
               <button className="modal-button" type="submit">Submit</button>
             </form>
 
-            <button className="modal-button" onClick={showModal}>Close</button>
+
           </div>
+          <button className="modal-button" onClick={showModal}>Close</button>
         </div>
           </div>
         </div>}
         <div className="crypto-alert-box-container">
-        {alertCryptos && alertCryptos.map((crypto) => (
+        {cryptoAlerts && cryptoAlerts.map((crypto) => {
+          return (
             <div className="crypto-alert-box">
               <p>{crypto.coin}</p>
-              <p>{crypto.price}</p>
+              {crypto.status == 'higher' ? <p>Price above {crypto.price}</p> : <p>Price below {crypto.price}</p>}
             </div>
-          ))}
+        )})}
         </div>
     </div>
   )
